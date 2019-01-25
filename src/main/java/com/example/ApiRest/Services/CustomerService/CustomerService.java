@@ -1,0 +1,19 @@
+package com.example.ApiRest.Services.CustomerService;
+
+import com.example.ApiRest.Entity.Customer;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public interface CustomerService {
+
+    List<Customer> findAll();
+    Optional<Customer> findById(String id);
+    Customer findByfirstName(String firstname);
+    Customer findByLastName(String lastname);
+    Customer save(Customer customer);
+    void delete(String id);
+
+}

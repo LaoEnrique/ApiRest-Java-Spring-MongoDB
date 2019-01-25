@@ -1,7 +1,7 @@
 package com.example.ApiRest.Controller;
 
 import com.example.ApiRest.Entity.Customer;
-import com.example.ApiRest.Services.CustomerService;
+import com.example.ApiRest.Services.CustomerService.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

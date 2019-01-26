@@ -27,8 +27,8 @@ public class ProductServiceImple implements ProductService {
     }
 
     @Override
-    public Product findByName(String name) {
-        Product result = this.productRepository.findByName(name);
+    public List<Product> findByName(String name) {
+        List<Product> result = this.productRepository.findByName(name);
         return result;
     }
 

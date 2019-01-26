@@ -9,8 +9,10 @@ import com.example.ApiRest.Services.CustomerService.CustomerService;
 import com.example.ApiRest.Services.OrderService.OrderService;
 import com.example.ApiRest.Services.ProductService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,12 +43,21 @@ public class OrderServiceImpl implements OrderService {
     public Order save(OrderDto order) {
         Order orderObject = new Order();
         orderObject.setTotal(order.getTotal());
+        orderObject.setTypePay(order.getTypePay());
 
         Optional<Customer> customer = this.customerService.findById(order.getCustomerId());
         orderObject.setCustomer(customer.get());
 
-        Optional<Product> product = this.productService.findById(order.getProductId());
-        orderObject.setProduct(product.get());
+        List<Product> listProduct = new ArrayList<>();
+
+        if(order.getProductId() != null){
+            for (String id : order.getProductId()  ) {
+                Optional<Product> product = this.productService.findById(id);
+                listProduct.add(product.get());
+            }
+        }
+
+        orderObject.setProduct(listProduct);
 
         Order result = this.orderRepository.save(orderObject);
         return result;

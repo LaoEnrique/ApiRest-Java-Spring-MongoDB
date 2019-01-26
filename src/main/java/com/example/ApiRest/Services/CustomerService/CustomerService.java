@@ -11,8 +11,8 @@ public interface CustomerService {
 
     List<Customer> findAll();
     Optional<Customer> findById(String id);
-    Customer findByfirstName(String firstname);
-    Customer findByLastName(String lastname);
+    List<Customer> findByfirstName(String firstname);
+    List<Customer> findByLastName(String lastname);
     Customer save(Customer customer);
     void delete(String id);
 

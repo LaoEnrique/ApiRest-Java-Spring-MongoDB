@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(collection = "orders")
 public class Order {
 
@@ -13,15 +15,13 @@ public class Order {
     private String total;
     @DBRef
     private Customer customer;
-    @DBRef
-    private Product product;
+
+    private List<Product> product;
+    private TypePayEnum typePay;
 
     public Order(){}
 
-    public Order(String id, String total, Customer customer, Product product) {
-        this.id = id;
-        this.total = total;
-        this.customer = customer;
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
 
@@ -49,11 +49,15 @@ public class Order {
         this.customer = customer;
     }
 
-    public Product getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public TypePayEnum getTypePay() {
+        return typePay;
+    }
+
+    public void setTypePay(TypePayEnum typePay) {
+        this.typePay = typePay;
     }
 }

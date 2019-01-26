@@ -36,13 +36,13 @@ public class CustomerController {
 
     @GetMapping(path = "/find/firstname")
     public ResponseEntity findByFirstName(@RequestParam String firstname){
-        Customer result = customerService.findByfirstName(firstname);
+        List<Customer> result = customerService.findByfirstName(firstname);
         return ResponseEntity.ok(result);
     }
 
     @GetMapping(path = "/find/lastname")
     public ResponseEntity findByLastName(@RequestParam String lastname){
-        Customer result = customerService.findByLastName(lastname);
+        List<Customer> result = customerService.findByLastName(lastname);
         return ResponseEntity.ok(result);
     }
 

@@ -25,13 +25,13 @@ public class CustomerServiceImpl implements CustomerService {
         return result;
     }
 
-    public Customer findByfirstName(String firstname){
-        Customer result = this.customerRepository.findByFirstName(firstname);
+    public List<Customer> findByfirstName(String firstname){
+        List<Customer> result = this.customerRepository.findByFirstName(firstname);
         return result;
     }
 
-    public Customer findByLastName(String lastname){
-        Customer result = this.customerRepository.findByLastName(lastname);
+    public List<Customer> findByLastName(String lastname){
+        List<Customer> result = this.customerRepository.findByLastName(lastname);
         return result;
     }
 
